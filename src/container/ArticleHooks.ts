@@ -28,25 +28,30 @@ export function useArticle(id: string) {
   // @ts-ignore
   const { Api: { articles }, articleState, dispatch } = useContext(ApiContext);
   const { article, list } = articleState;
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true)
 
-  useEffect(()=>{
+  useEffect(() => {
+    const defer = ()=>{
+      setLoading(false)
+      window.scrollTo(0, 0)
+    }
     if (!id || Number(article.id) === Number(id)) {
-      return;
+      return defer();
     }
     const picked = list.find((item: any)=>item.id === id);
     if (picked) {
-      setLoading(false);
       dispatch(getArticle(picked))
+      return defer();
     } else {
       articles.get(id).then((resp: any)=>{
         const { code, res } = resp;
         if (code !== 200) return;
-        dispatch(getArticle(res))
-        setLoading(false);
+        dispatch(getArticle(res));
+        return defer()
       })
     }
-  }, [article.id, dispatch, articles])
+  }, [article.id, dispatch, articles]);
+
   return {
     loading,
     article,

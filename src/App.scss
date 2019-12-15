@@ -43,11 +43,14 @@ aside {
   vertical-align: top;
 }
 
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 450px) {
   aside {
     display: none;
   }
   .container, .wrapper {
-    min-width: 360px;
+    max-width: 360px;
+  }
+  .container {
+    border-right: none;
   }
 }

@@ -1,15 +1,17 @@
-import React, { createContext, useReducer} from 'react';
+import React, {createContext, lazy, useReducer, Suspense} from 'react';
 import {
   BrowserRouter as Router, NavLink,
   Route,
 } from 'react-router-dom';
 
-import Api from './assets/api';
+import Api from './assets/api/index';
 import Container from './container';
 import Sidebar from "./container/Sidebar";
+import { articleReducer } from "./assets/store/reducers";
 
 import './App.scss';
-import { articleReducer } from "./assets/store/reducers";
+
+const TopJumper = lazy(() => import('./components/TopJumper'))
 
 export const ApiContext = createContext({})
 
@@ -35,6 +37,9 @@ export default function App() {
           </section>
         </ApiContext.Provider>
       </Route>
+      <Suspense fallback={''}>
+        <TopJumper />
+      </Suspense>
       <Sidebar />
     </Router>
   );

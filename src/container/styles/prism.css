@@ -4,8 +4,8 @@
  * @author Lea Verou
  */
 
-code[class*="language-"],
-pre[class*="language-"] {
+code,
+pre {
   color: black;
   background: none;
   text-shadow: 0 1px white;
