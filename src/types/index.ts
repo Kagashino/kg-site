@@ -1,8 +1,12 @@
+export interface AnyObject {
+  [key: string]: any;
+}
+
 
 export interface Paging<T> {
   page: number,
   size: number,
-  count: number,
+  total?: number,
   list: T[]
 }
 

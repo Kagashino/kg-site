@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch } from 'react-router';
+import { Route, Switch } from 'react-router-dom';
 import Articles from './Articles';
 import About from './About';
 import Article from './Article';
@@ -11,7 +11,7 @@ export default function Container() {
     <Switch>
       <Route exact path="/" component={ ()=>Articles({ loading, ...articleState }) } />
       <Route exact path="/article/:id" component={ Article } />
-      <Route exact path="/about" component={ About} />
+      <Route exact path="/about" component={About} />
     </Switch>
   )
 }
