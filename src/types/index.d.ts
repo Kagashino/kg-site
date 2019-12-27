@@ -2,14 +2,12 @@ export interface AnyObject {
   [key: string]: any;
 }
 
-
 export interface Paging<T> {
   page: number,
   size: number,
   total?: number,
   list: T[]
 }
-
 
 export interface Article {
   access: number,
