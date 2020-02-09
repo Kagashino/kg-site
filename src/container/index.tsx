@@ -4,6 +4,7 @@ import Articles from './Articles';
 import About from './About';
 import Article from './Article';
 import { useArticles } from './ArticleHooks';
+import Almanac from './Almanac';
 
 export default function Container() {
   const { articleState, loading } = useArticles()
@@ -12,6 +13,7 @@ export default function Container() {
       <Route exact path="/" component={ ()=>Articles({ loading, ...articleState }) } />
       <Route exact path="/article/:id" component={ Article } />
       <Route exact path="/about" component={ About} />
+      <Route exact path="/almanac" component={ Almanac } />
     </Switch>
   )
 }
