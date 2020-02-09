@@ -10,14 +10,13 @@ export const articleReducer = (state, action)=>{
       article: action.data
     }
     case UPDATE_ARTICLE_LIST: {
-      console.log(state, action)
-      const { list: appendList, page, total } = action;
+      const { list: appendList, page, count } = action;
       const list = [...state.list, ...appendList]
       return {
         ...state,
         page,
         list,
-        total
+        count
       }
     }
     default: return state;

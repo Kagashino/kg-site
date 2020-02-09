@@ -8,11 +8,11 @@ export const getArticle = data => ({
 
 
 export const appendArticles = (paging, list) => {
-  const { page = 0, total = 0 } = paging;
+  const { page = 0, count = 0 } = paging;
   return {
     type: UPDATE_ARTICLE_LIST,
     page,
-    total,
+    count,
     list
   }
 };

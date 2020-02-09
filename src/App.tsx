@@ -20,7 +20,7 @@ export default function App() {
     article: {},
     list: [],
     page: 0,
-    total: 0,
+    count: 0,
     size: 10
   });
 

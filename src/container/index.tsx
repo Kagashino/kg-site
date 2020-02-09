@@ -3,8 +3,8 @@ import { Route, Switch } from 'react-router';
 import Articles from './Articles';
 import About from './About';
 import Article from './Article';
-import { useArticles } from './ArticleHooks';
 import Almanac from './Almanac';
+import { useArticles } from './Article.hook';
 
 export default function Container() {
   const { articleState, loading } = useArticles()
