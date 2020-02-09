@@ -1,20 +1,20 @@
-import { Article } from '../../types';
+import {Article, Paging} from "../../types";
 
 export const GET_ARTICLE = 'GET_ARTICLE';
 export const UPDATE_ARTICLE_LIST = 'UPDATE_ARTICLE_LIST';
 
-export const getArticle = (data: Article) => ({
+export const getArticle = (data: Partial<Article>) => ({
   type: GET_ARTICLE,
-  data,
+  data
 });
 
 
-export const appendArticles = (paging: { page: number, total: number }, list: Article[]) => {
-  const { page = 0, total = 0 } = paging;
+export const appendArticles = (paging: Paging, list: Article[]) => {
+  const { page = 0, count = 0 } = paging;
   return {
     type: UPDATE_ARTICLE_LIST,
     page,
-    total,
-    list,
-  };
+    count,
+    list
+  }
 };

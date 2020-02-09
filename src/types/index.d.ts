@@ -1,11 +1,12 @@
-
-export interface Paging<T> {
+export interface Paging {
   page: number,
-  size: number,
+  size?: number,
   count: number,
-  list: T[]
 }
 
+export interface PagingList<T> extends Paging {
+  list: T[]
+}
 
 export interface Article {
   access: number,
@@ -17,7 +18,7 @@ export interface Article {
   title: string
 }
 
-export interface Articles extends Paging<Article>{}
+export interface Articles extends PagingList<Article>{}
 
 export type AlmanacActivity = {
 	name: string,

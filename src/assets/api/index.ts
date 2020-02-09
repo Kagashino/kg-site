@@ -1,14 +1,8 @@
-import {Article, Articles} from "../../types";
+import { Article, Articles, Paging } from "../../types";
 
 const url = (url: string): string => `${process.env.REACT_APP_API_URL}${url}`
 
 const handleResponse = (res: Response)=>res.json();
-
-interface Paging {
-  page: number,
-  size: number,
-  count?: number
-}
 
 export default {
   articles: {

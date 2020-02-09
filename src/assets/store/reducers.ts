@@ -1,32 +1,30 @@
-
 import {
   GET_ARTICLE,
   UPDATE_ARTICLE_LIST,
 } from './actions';
-import { AnyObject } from '../../types';
 
-interface ArticleAction extends AnyObject {
-  type: string
+interface ArticleAction {
+  type: string,
+  [key: string]: any
 }
 
-const ArticleReducer = (state: AnyObject, action: ArticleAction) => {
+
+export const ArticleReducer = (state: any, action: ArticleAction) => {
   switch (action.type) {
     case GET_ARTICLE: return {
       ...state,
       article: action.data,
     };
     case UPDATE_ARTICLE_LIST: {
-      const { list: appendList, page, total } = action;
+      const { list: appendList, page, count } = action;
       const list = [...state.list, ...appendList];
       return {
         ...state,
         page,
         list,
-        total,
+        count,
       };
     }
     default: return state;
   }
 };
-
-export default ArticleReducer;

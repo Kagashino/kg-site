@@ -4,8 +4,8 @@ import Articles from './Articles';
 import About from './About';
 import Article from './Article';
 import Almanac from './Almanac';
+import { useArticles } from './Article.hook';
 
-import { useArticles } from './ArticleHooks';
 
 export default function Container() {
   const { articleState, loading } = useArticles()

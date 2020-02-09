@@ -1,6 +1,4 @@
-import React, {
-  createContext, lazy, useReducer, Suspense,
-} from 'react';
+import React, {createContext, lazy, useReducer, Suspense} from 'react';
 import {
   BrowserRouter as Router, NavLink,
   Route,
@@ -8,29 +6,29 @@ import {
 
 import Api from './assets/api/index';
 import Container from './container';
-import Sidebar from './container/Sidebar';
-import ArticleReducer from './assets/store/reducers';
+import Sidebar from "./container/Sidebar";
+import { ArticleReducer } from "./assets/store/reducers";
 
 import './App.scss';
 
-const TopJumper = lazy(() => import('./components/TopJumper'));
+const TopJumper = lazy(() => import('./components/TopJumper'))
 
-export const ApiContext = createContext({});
+export const ApiContext = createContext({})
 
 export default function App() {
-  const [articleState, articleDispatch] = useReducer(ArticleReducer, {
+  const [ articleState, articleDispatch ] = useReducer(ArticleReducer, {
     article: {},
     list: [],
     page: 0,
-    total: 0,
-    size: 10,
+    count: 0,
+    size: 10
   });
 
   return (
     <Router>
       <nav>
-        <NavLink to="/" exact className="nav-link" activeClassName="active-link">首页</NavLink>
-        <NavLink to="/about" exact className="nav-link" activeClassName="active-link">关于</NavLink>
+        <NavLink to='/' exact className={'nav-link'} activeClassName={'active-link'}>首页</NavLink>
+        <NavLink to='/about' exact className={'nav-link'} activeClassName={'active-link'}>关于</NavLink>
       </nav>
       <Route path="/">
         <ApiContext.Provider value={{ Api, articleState, dispatch: articleDispatch }}>
@@ -39,7 +37,7 @@ export default function App() {
           </section>
         </ApiContext.Provider>
       </Route>
-      <Suspense fallback="">
+      <Suspense fallback={''}>
         <TopJumper />
       </Suspense>
       <Sidebar />
