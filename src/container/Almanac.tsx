@@ -1,20 +1,21 @@
 import React from 'react';
-import { useAlmanac } from './Almanac.hook'
 import { AlmanacResult } from "../types";
+import { useAlmanac } from './Almanac.hook'
+
+import './styles/Almanac.scss'
 
 export default function Almanac () {
   const res: AlmanacResult = useAlmanac();
-  console.log(res)
   return (
     <>
       <h3>程序员老黄历</h3>
-      <section>
+      <section className="almanac">
         <h2>{res.todayStr}</h2>
-        <table>
+        <table cellSpacing={0}>
           <tbody>
-          <tr>
-            <td><h2>宜</h2></td>
-            <td>
+          <tr className="fit">
+            <td className="title"><h2>宜</h2></td>
+            <td className="detail">
               {
                 res.good.map((item, index)=>(
                   <div key={index}>
@@ -25,9 +26,9 @@ export default function Almanac () {
               }
             </td>
           </tr>
-          <tr>
-            <td><h2>忌</h2></td>
-            <td>
+          <tr className="unfit">
+            <td className="title"><h2>忌</h2></td>
+            <td className="detail">
               {
                 res.bad.map((item, index)=>(
                   <div key={index}>
@@ -40,13 +41,21 @@ export default function Almanac () {
           </tr>
           </tbody>
         </table>
-        <div className="">
-          <h4>坐位朝向</h4>
-          <span>{ res.direction }</span>
-          <h4>今日宜饮</h4>
-          <span>{ res.drink.join('，') }</span>
-          <h4>女神亲近指数：</h4>
-          <span className="mekami">{ res.rate }</span>
+        <div className="other">
+          <div>
+            <h4>坐位朝向：</h4>
+            <span>
+              面向<span className="direction">{ res.direction }</span>写程序，BUG最少
+            </span>
+          </div>
+          <div>
+            <h4>今日宜饮：</h4>
+            <span>{ res.drink.join('，') }</span>
+          </div>
+          <div>
+            <h4>女神亲近指数：</h4>
+            <span className="mekami">{ res.rate }</span>
+          </div>
         </div>
         <footer>
           本老黄历保留了日期种子计算方法，可通过自定义配置，生成任意类型的老黄历
