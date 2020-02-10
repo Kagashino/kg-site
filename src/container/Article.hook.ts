@@ -10,9 +10,7 @@ export function useArticles() {
   useEffect(()=>{
     switchLoading(true);
     articles.list({ page }).then((resp: any): void => {
-      const { code, res } = resp;
-      if (code !== 200) return;
-      const { list, ...paging } = res;
+      const { list, ...paging } = resp;
       dispatch(appendArticles({ ...paging, page }, list))
     }).finally((): void =>{
       switchLoading(false);
@@ -27,7 +25,7 @@ export function useArticles() {
 export function useArticle(id: string) {
   // @ts-ignore
   const { Api: { articles }, articleState, dispatch } = useContext(ApiContext);
-  const { article, list } = articleState;
+  const { article } = articleState;
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -35,21 +33,10 @@ export function useArticle(id: string) {
       setLoading(false)
       window.scrollTo(0, 0)
     }
-    if (!id || Number(article.id) === Number(id)) {
-      return defer();
-    }
-    const picked = list.find((item: any)=>item.id === id);
-    if (picked) {
-      dispatch(getArticle(picked))
-      return defer();
-    } else {
-      articles.get(id).then((resp: any)=>{
-        const { code, res } = resp;
-        if (code !== 200) return;
-        dispatch(getArticle(res));
-        return defer()
-      })
-    }
+    articles.get(id).then((resp: any)=>{
+      dispatch(getArticle(resp));
+      return defer()
+    })
   }, [article.id, dispatch, articles]);
 
   return {

@@ -7,7 +7,7 @@ import {
 import Api from './assets/api/index';
 import Container from './container';
 import Sidebar from "./container/Sidebar";
-import { articleReducer } from "./assets/store/reducers";
+import { ArticleReducer } from "./assets/store/reducers";
 
 import './App.scss';
 
@@ -16,11 +16,11 @@ const TopJumper = lazy(() => import('./components/TopJumper'))
 export const ApiContext = createContext({})
 
 export default function App() {
-  const [ articleState, articleDispatch ] = useReducer(articleReducer, {
+  const [ articleState, articleDispatch ] = useReducer(ArticleReducer, {
     article: {},
     list: [],
     page: 0,
-    total: 0,
+    count: 0,
     size: 10
   });
 

@@ -7,7 +7,7 @@ import './styles/Articles.scss';
 
 type ArticlesProps = {
   page: number,
-  total: number,
+  count: number,
   list: Array<{}>,
   noMore: boolean,
   loading: boolean,
@@ -15,11 +15,10 @@ type ArticlesProps = {
 export default function Articles(props: ArticlesProps, ...rest: any[]) {
   // @ts-ignore
   const { dispatch } = useContext(ApiContext);
-  console.log(props, rest)
   const {
     loading,
     page,
-    total,
+    count,
     list,
   } = props;
 
@@ -27,11 +26,11 @@ export default function Articles(props: ArticlesProps, ...rest: any[]) {
     if (noMore) {
       return;
     }
-    dispatch(appendArticles({ page: page + 1, total }, []))
+    dispatch(appendArticles({ page: page + 1, count }, []))
   }
 
   const showLoading: boolean = loading;
-  const noMore: boolean = !loading && list.length >= total;
+  const noMore: boolean = !loading && list.length >= count;
   const showLoadMore: boolean = !loading && !noMore;
   return (
     <ul className="article-list">
@@ -39,8 +38,8 @@ export default function Articles(props: ArticlesProps, ...rest: any[]) {
         list.map((item: any) =>(
           <li key={item.id}>
             <Link to={`article/${item.id}`}>
-              <h3>{item.title.replace(/.md$/, '')}</h3>
-              <p>{item.context.substr(0, 200)}</p>
+              <h3>{item.title }</h3>
+              <p>{item.abstract }</p>
               <span>{item.author} | { new Date(item.created).toLocaleString() }</span>
             </Link>
           </li>

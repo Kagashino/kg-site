@@ -8,5 +8,5 @@ export default function About() {
       <h3>Email</h3>
       <p>ghosthcp516@hotmail.com</p>
     </section>
-  )
+  );
 }

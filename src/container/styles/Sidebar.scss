@@ -1,0 +1,10 @@
+aside.sidebar {
+  padding-left: 20px;
+  a {
+    color: #888;
+  }
+  a.active {
+    font-weight: bold;
+    color: #111;
+  }
+}
