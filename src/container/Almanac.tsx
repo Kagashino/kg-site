@@ -1,5 +1,4 @@
 import React from 'react';
-import { AlmanacResult } from "../types";
 import { useAlmanac } from './Almanac.hook'
 
 import './styles/Almanac.scss'

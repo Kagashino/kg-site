@@ -19,5 +19,3 @@ export default {
     }
   }
 }
-
-export const getAlmanacSet = ()=>import('./almanac_set.json');
