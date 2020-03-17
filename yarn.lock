@@ -8363,6 +8363,11 @@ process@^0.11.10:
   resolved "https://registry.yarnpkg.com/process/-/process-0.11.10.tgz#7332300e840161bda3e69a1d1d91a7d4bc16f182"
   integrity sha1-czIwDoQBYb2j5podHZGn1LwW8YI=
 
+programmer-almanac-generator@^0.9.1:
+  version "0.9.1"
+  resolved "https://registry.yarnpkg.com/programmer-almanac-generator/-/programmer-almanac-generator-0.9.1.tgz#2f2c48bd9410ee293c9658c4c58a97fa53ce2e91"
+  integrity sha512-F3qz7W0kiW3U7nAutfKlCmwmRMWcdYYFTv9cYyJfmAIlyLCOy9fIJtP4JQbyYz0Xjot8EJdoQI4kDeb7BHP9LA==
+
 progress@^2.0.0:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/progress/-/progress-2.0.3.tgz#7e8cf8d8f5b8f239c1bc68beb4eb78567d572ef8"
