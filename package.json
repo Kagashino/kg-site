@@ -6,7 +6,7 @@
   "typings": "./src/types/index.d.ts",
   "dependencies": {
     "dayjs": "^1.8.17",
-    "programmer-almanac-generator": "^0.9.1",
+    "programmer-almanac-generator": "^0.9.3",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-markdown": "^4.2.2",

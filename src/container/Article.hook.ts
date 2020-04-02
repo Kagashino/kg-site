@@ -1,18 +1,17 @@
 import {useEffect, useContext, useState} from 'react';
-import { appendArticles, getArticle } from "../assets/store/actions";
-import { ApiContext } from "../App";
+import { appendArticles, getArticle } from '../assets/store/actions';
+import { ApiContext } from '../assets/store/context';
 
 export function useArticles() {
-  // @ts-ignore
   const { Api: { articles }, articleState, dispatch } = useContext(ApiContext);
-  const  { page } = articleState;
+  const { page } = articleState;
   const [loading, switchLoading] = useState(true);
-  useEffect(()=>{
+  useEffect(() => {
     switchLoading(true);
     articles.list({ page }).then((resp: any): void => {
       const { list, ...paging } = resp;
       dispatch(appendArticles({ ...paging, page }, list))
-    }).finally((): void =>{
+    }).finally((): void => {
       switchLoading(false);
     })
   }, [page])
@@ -23,21 +22,17 @@ export function useArticles() {
 }
 
 export function useArticle(id: string) {
-  // @ts-ignore
-  const { Api: { articles }, articleState, dispatch } = useContext(ApiContext);
+  const { Api, articleState, dispatch } = useContext(ApiContext);
   const { article } = articleState;
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    const defer = ()=>{
-      setLoading(false)
-      window.scrollTo(0, 0)
-    }
-    articles.get(id).then((resp: any)=>{
+    Api.articles.get(id).then((resp: any) => {
       dispatch(getArticle(resp));
-      return defer()
+      setLoading(false);
+      window.scrollTo(0, 0);
     })
-  }, [article.id, dispatch, articles]);
+  }, [id]);
 
   return {
     loading,

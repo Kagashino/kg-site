@@ -1,4 +1,4 @@
-import { Article, Articles, Paging } from "../../types";
+import { Article, Articles, Paging } from '../../types';
 
 const url = (url: string): string => `${process.env.REACT_APP_API_URL}${url}`
 
