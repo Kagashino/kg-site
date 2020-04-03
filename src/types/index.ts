@@ -1,3 +1,7 @@
+export interface PlainObject {
+  [key: string]: any
+}
+
 export interface Paging {
   page: number,
   size?: number,

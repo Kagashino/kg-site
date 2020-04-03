@@ -1,7 +1,7 @@
-import React, {useContext} from 'react';
-import { Link } from "react-router-dom";
-import { ApiContext } from "../App";
-import { appendArticles } from "../assets/store/actions";
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
+import { ApiContext } from '../assets/store/context';
+import { appendArticles } from '../assets/store/actions';
 
 import './styles/Articles.scss';
 
@@ -9,11 +9,10 @@ type ArticlesProps = {
   page: number,
   count: number,
   list: Array<{}>,
-  noMore: boolean,
+  noMore?: boolean,
   loading: boolean,
 }
-export default function Articles(props: ArticlesProps, ...rest: any[]) {
-  // @ts-ignore
+export default function Articles(props: ArticlesProps) {
   const { dispatch } = useContext(ApiContext);
   const {
     loading,
@@ -22,12 +21,12 @@ export default function Articles(props: ArticlesProps, ...rest: any[]) {
     list,
   } = props;
 
-  const handleLoadMore = ()=>{
+  const handleLoadMore = () => {
     if (noMore) {
       return;
     }
-    dispatch(appendArticles({ page: page + 1, count }, []))
-  }
+    dispatch(appendArticles({ page: page + 1, count }, []));
+  };
 
   const showLoading: boolean = loading;
   const noMore: boolean = !loading && list.length >= count;
@@ -35,12 +34,18 @@ export default function Articles(props: ArticlesProps, ...rest: any[]) {
   return (
     <ul className="article-list">
       {
-        list.map((item: any) =>(
+        list.map((item: any) => (
           <li key={item.id}>
             <Link to={`article/${item.id}`}>
               <h3>{item.title }</h3>
               <p>{item.abstract }</p>
-              <span>{item.author} | { new Date(item.created).toLocaleString() }</span>
+              <span>
+                {item.author}
+                {' '}
+|
+                {' '}
+                { new Date(item.created).toLocaleString() }
+              </span>
             </Link>
           </li>
         ))
@@ -49,11 +54,11 @@ export default function Articles(props: ArticlesProps, ...rest: any[]) {
         showLoading && <li className="loading-control loading">加载中...</li>
       }
       {
-        showLoadMore && <li className="loading-control more" onClick={ handleLoadMore }>加载更多</li>
+        showLoadMore && <li className="loading-control more" onClick={handleLoadMore}>加载更多</li>
       }
       {
         noMore && <li className="loading-control">没有更多了</li>
       }
     </ul>
-  )
+  );
 }

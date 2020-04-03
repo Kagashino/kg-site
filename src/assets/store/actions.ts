@@ -1,4 +1,4 @@
-import {Article, Paging} from "../../types";
+import { Article, Paging } from "../../types";
 
 export const GET_ARTICLE = 'GET_ARTICLE';
 export const UPDATE_ARTICLE_LIST = 'UPDATE_ARTICLE_LIST';
