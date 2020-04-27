@@ -1,2 +1,3 @@
 build/
+config-overrides.js
 src/serviceWorker.js

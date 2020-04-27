@@ -1,11 +1,10 @@
-import { Article, Paging } from "../../types";
-
+export const ADD_SUB_APP = 'ADD_SUB_APP';
 export const GET_ARTICLE = 'GET_ARTICLE';
 export const UPDATE_ARTICLE_LIST = 'UPDATE_ARTICLE_LIST';
 
 export const getArticle = (data: Partial<Article>) => ({
   type: GET_ARTICLE,
-  data
+  data,
 });
 
 
@@ -15,6 +14,12 @@ export const appendArticles = (paging: Paging, list: Article[]) => {
     type: UPDATE_ARTICLE_LIST,
     page,
     count,
-    list
-  }
+    list,
+  };
 };
+
+export const registerSubApp = (name: string, config: any) => ({
+  type: ADD_SUB_APP,
+  name,
+  config,
+});
