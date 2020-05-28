@@ -9,16 +9,17 @@ import TrustSubApps from '../assets/routes/subApps';
 export default function ({ match }: RouteComponentProps<{ id: string }>) {
   const { params: { id: appId } } = match;
   const { Api: { Manifest }, SubApps, dispatch } = useContext(AppContext);
-  const SubAppMismatch = !TrustSubApps.includes(appId);
+  const SubAppMismatch = !TrustSubApps.find(({ id }) => appId === id);
+
   useLayoutEffect(() => {
     if (SubApps[appId] || SubAppMismatch) {
       document.dispatchEvent(new Event(`LAUNCH_APP:kg-site-${appId}`));
     } else {
       Manifest.get(appId).then(async (result: any) => {
-        const { path, files } = result;
+        const { baseUrl, files } = result;
         if (files && files.length) {
           dispatch(registerSubApp(appId, result));
-          await batchLoadResources(files.map((i: string) => `https://${path}/${i}`));
+          await batchLoadResources(files.map((i: string) => `${baseUrl}/${i}`));
           document.dispatchEvent(new Event(`LAUNCH_APP:kg-site-${appId}`));
         }
       });

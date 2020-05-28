@@ -1,3 +1,7 @@
 export default [
-  'almanac',
+  {
+    id: 'almanac',
+    title: '黄历',
+    name: 'almanac',
+  },
 ];

@@ -40,7 +40,7 @@ export default function Sidebar() {
         loading
           ? <Loading />
           : subApps.map(({ name, title }) => (
-            <NavLink key={name} to={`app/${name}`}>{ title }</NavLink>
+            <NavLink key={name} to={`/app/${name}`}>{ title }</NavLink>
           ))
       }
     </aside>
