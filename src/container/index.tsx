@@ -3,18 +3,20 @@ import { Route, Switch } from 'react-router-dom';
 import Articles from './Articles';
 import About from './About';
 import Article from './Article';
-import Almanac from './Almanac';
 import { useArticles } from './Article.hook';
-
+import SubAppContainer from '../components/SubAppContainer';
 
 export default function Container() {
-  const { articleState, loading } = useArticles()
+  const { article, loading } = useArticles();
   return (
     <Switch>
-      <Route exact path="/" component={ () => Articles({ loading, ...articleState }) } />
-      <Route exact path="/article/:id" component={ Article } />
-      <Route exact path="/about" component={ About} />
-      <Route exact path="/almanac" component={ Almanac } />
+      <Route exact path="/" component={() => Articles({ loading, ...article })} />
+      <Route exact path="/article/:id" component={Article} />
+      <Route exact path="/about" component={About} />
+      <Route
+        path="/app/:id"
+        component={SubAppContainer}
+      />
     </Switch>
-  )
+  );
 }
