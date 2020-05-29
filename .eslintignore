@@ -1,2 +1,5 @@
 build/
+public/
+cache/
+config-overrides.js
 src/serviceWorker.js
