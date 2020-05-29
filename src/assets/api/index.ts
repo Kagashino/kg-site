@@ -1,21 +1,28 @@
-import { Article, Articles, Paging } from '../../types';
+export const http = (
+  path: string,
+  ...payload: any[]
+) => fetch(
+  path.startsWith('http') ? path : `${process.env.REACT_APP_API_URL}${path}`,
+  ...payload,
+).then(
+  (res: Response) => res.json(),
+);
 
-const url = (url: string): string => `${process.env.REACT_APP_API_URL}${url}`
-
-const handleResponse = (res: Response)=>res.json();
 
 export default {
-  articles: {
+  Articles: {
     get(id: string | number): Promise<Article> {
-      return fetch(url(`/article/${id}`)).then(
-        handleResponse
-      )
+      return http(`/article/${id}`);
     },
-    list(paging: Paging): Promise<Articles> {
+    list(paging: Partial<Paging>): Promise<PagingList<Article>> {
       const { page = 0 } = paging;
-      return fetch(url(`/articles?page=${page}`)).then(
-        handleResponse
-      )
-    }
-  }
-}
+      return http(`/articles?page=${page}`);
+    },
+  },
+  Manifest: {
+    get: (id: string): Promise<PlainObject> => http(
+      `${process.env.REACT_APP_OSS_URL}/${id}/subapp-manifest.json`,
+    ),
+    list: (): Promise<PlainObject> => http('/manifests'),
+  },
+};

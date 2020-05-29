@@ -1,4 +1,5 @@
 import {
+  ADD_SUB_APP,
   GET_ARTICLE,
   UPDATE_ARTICLE_LIST,
 } from './actions';
@@ -8,23 +9,35 @@ interface ArticleAction {
   [key: string]: any
 }
 
-
-export const ArticleReducer = (state: any, action: ArticleAction) => {
+export default (state: any, action: ArticleAction) => {
   switch (action.type) {
     case GET_ARTICLE: return {
       ...state,
-      article: action.data,
+      article: {
+        ...state.article,
+        current: action.data,
+      },
     };
     case UPDATE_ARTICLE_LIST: {
       const { list: appendList, page, count } = action;
-      const list = [...state.list, ...appendList];
+      const list = [...state.article.list, ...appendList];
       return {
         ...state,
-        page,
-        list,
-        count,
+        article: {
+          ...state.article,
+          page,
+          list,
+          count,
+        },
       };
     }
+    case ADD_SUB_APP: return {
+      ...state,
+      SubApps: {
+        ...state.SubApps,
+        [action.name]: action.config,
+      },
+    };
     default: return state;
   }
 };
