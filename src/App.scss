@@ -43,6 +43,12 @@ aside {
   vertical-align: top;
 }
 
+@media screen and (min-width: 450px){
+  .mobile-only {
+    display: none !important;
+  }
+}
+
 @media screen and (max-width: 450px) {
   aside {
     display: none;

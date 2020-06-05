@@ -33,7 +33,6 @@ export const loadResource = async (
 ) => new Promise((resolve, reject) => {
   const suffix = url.substr(url.lastIndexOf('.') + 1);
   const appliedUrl = `${url}${query ? `?${stringify(query)}` : ''}`;
-  console.log('url,aapppp', appliedUrl);
   if (suffix === 'js') {
     const scripts = Array.from(document.scripts).map((s) => s.src);
     if (scripts.some((src) => src === appliedUrl)) {
