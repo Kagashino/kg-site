@@ -47,9 +47,11 @@ aside {
   aside {
     display: none;
   }
+  .wrapper {
+    padding: 0;
+  }
   .container, .wrapper {
-    max-width: 360px;
-    padding: 0 20px;
+    max-width: 340px;
   }
   .container {
     border-right: none;
