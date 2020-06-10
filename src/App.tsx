@@ -18,9 +18,33 @@ export default function App() {
   return (
     <Router>
       <nav>
-        <NavLink to="/" exact className="nav-link" activeClassName="active-link">首页</NavLink>
-        <NavLink to="/apps" exact className="nav-link mobile-only" activeClassName="active-link">子应用</NavLink>
-        <NavLink to="/about" exact className="nav-link" activeClassName="active-link">关于</NavLink>
+        <NavLink
+          to="/"
+          replace
+          exact
+          className="nav-link"
+          activeClassName="active-link"
+        >
+          首页
+        </NavLink>
+        <NavLink
+          to="/apps"
+          replace
+          exact
+          className="nav-link mobile-only"
+          activeClassName="active-link"
+        >
+          子应用
+        </NavLink>
+        <NavLink
+          to="/about"
+          replace
+          exact
+          className="nav-link"
+          activeClassName="active-link"
+        >
+          关于
+        </NavLink>
       </nav>
       <Route path="/">
         <AppContext.Provider value={{

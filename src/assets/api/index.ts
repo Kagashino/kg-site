@@ -21,7 +21,7 @@ export default {
   },
   Manifest: {
     get: (id: string): Promise<PlainObject> => http(
-      `${process.env.REACT_APP_OSS_URL}/${id}/subapp-manifest.json`,
+      `${process.env.REACT_APP_OSS_URL}/${id}/subapp-manifest.json?t=${Date.now()}`,
     ),
     list: (): Promise<PlainObject> => http('/manifests'),
   },
