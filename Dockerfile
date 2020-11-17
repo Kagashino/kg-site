@@ -1,6 +1,7 @@
-FROM node:10-alpine
-ADD ./ /code
+FROM nginx:alpine
 
-RUN cd /code \
-    && npm run start \
-EXPOSE 3000
+COPY build/ /app
+
+COPY config/spa.conf /etc/nginx/conf.d/spa.conf
+
+CMD ["nginx", "-g", "daemon off;"]

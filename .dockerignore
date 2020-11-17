@@ -15,5 +15,4 @@ typings/
 .dockerignore
 .eslintrc
 .gitignore
-build/
 README.md
