@@ -10,8 +10,10 @@ module.exports = {
     "airbnb/hooks"
   ],
   rules: {
-    'import/no-unresolved': 'off',
+    'import/no-unresolved': 'warn',
+    'linebreak-style': ['off'],
     "react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx"] }],
+    'react/prop-types': 'off',
   }
   // ignorePatterns: ["build/"]
 }
