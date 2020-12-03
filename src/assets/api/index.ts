@@ -6,6 +6,13 @@ export const http = (
   ...payload,
 ).then(
   (res: Response) => res.json(),
+).then(
+  ({ code, data, msg }) => {
+    if (code === 0) {
+      return data;
+    }
+    return Promise.reject(msg);
+  },
 );
 
 
