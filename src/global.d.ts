@@ -35,3 +35,10 @@ declare interface SubApp {
 }
 
 declare module 'programmer-almanac-generator';
+
+declare interface Window {
+  _hmt: any[]
+}
+
+// eslint-disable-next-line no-underscore-dangle
+declare let _hmt: any[];

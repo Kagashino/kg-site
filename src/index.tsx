@@ -2,9 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import loadStatistic from './statistic';
 
 window.React = React;
 window.ReactDOM = ReactDOM;
+loadStatistic();
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
