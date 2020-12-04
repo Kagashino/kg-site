@@ -19,11 +19,11 @@ export const http = (
 export default {
   Articles: {
     get(id: string | number): Promise<Article> {
-      return http(`/article/${id}`);
+      return http(`/post/${id}`);
     },
     list(paging: Partial<Paging>): Promise<PagingList<Article>> {
       const { page = 0 } = paging;
-      return http(`/articles?page=${page}`);
+      return http(`/posts?page=${page}`);
     },
   },
   Manifest: {
