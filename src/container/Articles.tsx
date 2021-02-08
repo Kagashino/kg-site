@@ -41,7 +41,7 @@ export default function Articles(props: ArticlesProps) {
                 <p>{item.abstract }</p>
                 <span>
                   {item.author}
-                  { new Date(item.created).toLocaleString() }
+                  { new Date(+item.created).toLocaleString() }
                 </span>
               </Link>
             </li>
