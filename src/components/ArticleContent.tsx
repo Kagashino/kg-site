@@ -10,7 +10,7 @@ interface Props {
 const ArticleContent: FC<Props> = ({ title, created, content }) => (
   <>
     <h3>{ `${title || ''}`.replace(/\.md$/, '') }</h3>
-    <div className="brief">{ new Date(created).toLocaleString() }</div>
+    <div className="brief">{ new Date(+created).toLocaleString() }</div>
     <p>
       <ReactMarkdown
         source={content}
