@@ -4,13 +4,10 @@ import dotEnv from 'dotenv';
 
 const envs = dotEnv.config();
 
-const manifestPlugin = () => {
-
-}
-
 export default defineConfig({
     root: process.cwd(),
     build: {
+        outDir: "build",
         manifest: true
     },
     define: {
