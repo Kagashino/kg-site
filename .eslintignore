@@ -1,6 +1,7 @@
 build/
+dist/
 public/
 cache/
-config-overrides.js
+.eslintrc.js
 src/serviceWorker.js
 scripts/
