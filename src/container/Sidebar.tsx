@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
 import SubApps from '../assets/routes/subApps';
 import './styles/Sidebar.scss';
 
@@ -22,11 +21,12 @@ export default function Sidebar() {
   return (
     <aside className="sidebar">
       <h3>功能</h3>
-      {
-        subApps.map(({ name, title }) => (
-          <NavLink key={name} to={`/app/${name}`}>{ title }</NavLink>
-        ))
-      }
+      <p>I'm maintaining this block 🚧</p>
+      {/*{*/}
+      {/*  subApps.map(({ name, title }) => (*/}
+      {/*    <NavLink key={name} to={`/app/${name}`}>{ title }</NavLink>*/}
+      {/*  ))*/}
+      {/*}*/}
     </aside>
   );
 }

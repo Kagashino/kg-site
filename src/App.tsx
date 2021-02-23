@@ -27,15 +27,17 @@ export default function App() {
         >
           首页
         </NavLink>
-        <NavLink
-          to="/apps"
-          replace
-          exact
-          className="nav-link mobile-only"
-          activeClassName="active-link"
-        >
-          子应用
-        </NavLink>
+        {/*
+          <NavLink
+            to="/apps"
+            replace
+            exact
+            className="nav-link mobile-only"
+            activeClassName="active-link"
+          >
+            子应用
+          </NavLink>
+        */}
         <NavLink
           to="/about"
           replace
