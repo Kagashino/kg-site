@@ -1,4 +1,5 @@
-import { defineConfig } from "vite";
+import * as fs from 'fs';
+import { defineConfig } from 'vite';
 import reactRefresh from "@vitejs/plugin-react-refresh";
 import dotEnv from 'dotenv';
 
@@ -12,13 +13,12 @@ export default defineConfig({
     },
     define: {
         'process.env': JSON.stringify(envs.parsed),
-        'process.cwd': `() => "${process.cwd()}"`
+        // 'process.cwd': `() => "${process.cwd()}"`
     },
     server: {
         port: 3001
     },
     plugins: [
         reactRefresh(),
-
     ]
 })
