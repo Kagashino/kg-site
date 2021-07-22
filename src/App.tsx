@@ -1,20 +1,17 @@
-import React, { lazy, Suspense, useReducer } from 'react';
+import React, {
+  lazy, Suspense
+} from 'react';
 import {
   BrowserRouter as Router, NavLink,
-  Route,
 } from 'react-router-dom';
-
 import Container from './container';
 import Sidebar from './container/Sidebar';
-import { AppContext, AppContextDefault } from './assets/store/context';
-import ArticleReducer from './assets/store/reducers';
 
 import './App.scss';
 
 const TopJumper = lazy(() => import('./components/TopJumper'));
 
 export default function App() {
-  const [{ article, SubApps }, dispatch] = useReducer(ArticleReducer, AppContextDefault);
   return (
     <Router>
       <nav>
@@ -48,19 +45,9 @@ export default function App() {
           关于
         </NavLink>
       </nav>
-      <Route path="/">
-        <AppContext.Provider value={{
-          ...AppContextDefault,
-          article,
-          SubApps,
-          dispatch,
-        }}
-        >
-          <section className="container">
-            <Container />
-          </section>
-        </AppContext.Provider>
-      </Route>
+      <section className="container">
+        <Container />
+      </section>
       <Suspense fallback="loading...">
         <TopJumper />
       </Suspense>
